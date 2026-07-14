@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triagem - Sistema de Chamadas</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .logo-area {
+            margin-bottom: 25px;
+        }
+
+        .logo-area h1 {
+            color: #1e3a8a;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .logo-area p {
+            color: #6b7280;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #374151;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            outline: none;
+            background-color: #f9fafb;
+        }
+
+        input[type="text"]:focus {
+            border-color: #2563eb;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #1d4ed8;
+        }
+
+        .alert {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .alert-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-area">
+            <h1>Triagem de Motoristas</h1>
+            <p>Insira os dados do motorista para entrar na fila de entrega</p>
+        </div>
+
+        <form id="triagemForm">
+            <div class="form-group">
+                <label for="nomeMotorista">Nome Completo do Motorista</label>
+                <input type="text" id="nomeMotorista" placeholder="Ex: João Silva Sauro" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gaiolaOriginal">Gaiola do Pacote (Ex: A-01, B-03, C-20)</label>
+                <input type="text" id="gaiolaOriginal" placeholder="Ex: A-01" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Dar Entrada na Fila</button>
+        </form>
+
+        <div id="mensagemFeedback" class="alert"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script>
+        // ==========================================================
+        // CONFIGURAÇÃO DO FIREBASE COM AS SUAS CREDENCIAIS PRONTAS
+        // ==========================================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyCndSz1N8C_i94VbQsVLu9VUIEI1du-KAo",
+            authDomain: "sistema-drives.firebaseapp.com",
+            databaseURL: "https://sistema-drives-default-rtdb.firebaseio.com",
+            projectId: "sistema-drives",
+            storageBucket: "sistema-drives.firebasestorage.app",
+            messagingSenderId: "90142488187",
+            appId: "1:90142488187:web:e78be9ed5943ee8e7a54de"
+        };
+        // ==========================================================
+
+        // Inicializando as ferramentas do Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Elementos do HTML capturados pelo JavaScript
+        const form = document.getElementById('triagemForm');
+        const feedback = document.getElementById('mensagemFeedback');
+
+        // Evento que roda quando o botão de enviar é clicado
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede a página de recarregar totalmente
+
+            const nome = document.getElementById('nomeMotorista').value.trim();
+            const gaiola = document.getElementById('gaiolaOriginal').value.trim().toUpperCase();
+
+            // Salva as informações dentro do Firebase de forma organizada por ordem de chegada
+            const novaChamadaRef = database.ref('fila').push();
+
+            novaChamadaRef.set({
+                nome: nome,
+                gaiola: gaiola,
+                bancada: "",        // Começa vazio até o atendente chamar
+                status: "aguardando", // Status inicial padrão
+                timestamp: firebase.database.ServerValue.TIMESTAMP // Registra o horário exato do clique
+            })
+            .then(() => {
+                // Mostra mensagem verde de sucesso na tela
+                feedback.className = "alert alert-success";
+                feedback.innerText = `Sucesso! ${nome} entrou na fila.`;
+                feedback.style.display = "block";
+
+                form.reset(); // Limpa os campos do formulário para o próximo motorista
+
+                // Esconde o aviso depois de 4 segundos
+                setTimeout(() => { feedback.style.display = "none"; }, 4000);
+            })
+            .catch((error) => {
+                // Caso ocorra algum erro, mostra o aviso vermelho
+                feedback.className = "alert alert-error";
+                feedback.innerText = "Erro ao salvar os dados: " + error.message;
+                feedback.style.display = "block";
+            });
+        });
+    </script>
+</body>
+</html>
