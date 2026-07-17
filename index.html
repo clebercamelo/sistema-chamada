@@ -13,9 +13,9 @@
         }
 
         body {
-            background-color: #fbf7f4;
-            color: #374151;
-            padding: 20px;
+            background-color: #0d0f12;
+            color: #e2e8f0;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -24,135 +24,178 @@
 
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1200px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 15px;
+            position: relative;
         }
 
         header h1 {
-            color: #ea580c;
-            font-size: 32px;
-            font-weight: 800;
+            color: #ff6b00;
+            font-size: 38px;
+            font-weight: 900;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
         }
 
         header p {
-            color: #6b7280;
-            margin-top: 5px;
-            font-size: 16px;
+            color: #94a3b8;
+            margin-top: 8px;
+            font-size: 18px;
+            font-weight: 500;
         }
 
+        /* CARD DESTAQUE PRINCIPAL */
         .chamado-principal {
-            background-color: #ffedd5;
-            border: 3px solid #f97316;
-            border-radius: 16px;
-            padding: 25px;
+            background: linear-gradient(135deg, #151922 0%, #0f1319 100%);
+            border: 3px solid #ff6b00;
+            border-radius: 20px;
+            padding: 35px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(234, 88, 12, 0.15);
-            margin-bottom: 25px;
-            animation: piscar-borda 1.5s infinite alternate;
+            box-shadow: 0 0 35px rgba(255, 107, 0, 0.2);
+            margin-bottom: 30px;
+            animation: pulsar-borda 2s infinite alternate;
         }
 
-        @keyframes piscar-borda {
-            from { border-color: #f97316; box-shadow: 0 10px 25px rgba(234, 88, 12, 0.15); }
-            to { border-color: #ea580c; box-shadow: 0 10px 30px rgba(234, 88, 12, 0.35); }
+        @keyframes pulsar-borda {
+            from {
+                border-color: #ff6b00;
+                box-shadow: 0 0 25px rgba(255, 107, 0, 0.15);
+            }
+            to {
+                border-color: #ff9e59;
+                box-shadow: 0 0 45px rgba(255, 107, 0, 0.35);
+            }
         }
 
         .chamado-principal h2 {
-            color: #c2410c;
-            font-size: 14px;
+            color: #94a3b8;
+            font-size: 20px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .bancada-destacada {
+            color: #ff6b00;
+            font-size: 42px;
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+            display: inline-block;
+            margin-left: 5px;
         }
 
         .destaque-dupla-flex {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             justify-content: space-between;
             flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
         .motorista-destaque-box {
             flex: 1;
-            min-width: 260px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-            border-left: 6px solid #16a34a; 
+            min-width: 280px;
+            background: #1e2530;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #2e3748;
+            border-left: 8px solid #10b981; 
             text-align: left;
+            transition: all 0.3s ease;
         }
 
         .motorista-destaque-box.retardatario {
-            border-left-color: #dc2626; 
-            background: #fef2f2;
+            border-left-color: #ef4444; 
+            background: #271a21;
+            border-color: #4a202d;
         }
 
         .nome-grande {
-            font-size: 24px;
-            font-weight: 800;
-            color: #16a34a; 
-            margin-bottom: 10px;
+            font-size: 32px;
+            font-weight: 900;
+            color: #10b981; 
+            margin-bottom: 15px;
             word-wrap: break-word;
-            height: 64px;
+            min-height: 80px;
             display: flex;
             align-items: center;
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
         }
 
         .retardatario .nome-grande {
-            color: #dc2626; 
+            color: #ef4444; 
             font-style: italic;
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
         }
 
         .gaiola-badge {
             display: inline-block;
-            background-color: #d1fae5;
-            color: #065f46;
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 16px;
+            background-color: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 18px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            letter-spacing: 1px;
         }
 
         .retardatario .gaiola-badge {
-            background-color: #fee2e2;
-            color: #991b1b;
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.3);
         }
 
         .meta-chamado {
-            margin-top: 15px;
+            margin-top: 20px;
             display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            color: #4b5563;
-            border-top: 1px solid #f3f4f6;
-            padding-top: 10px;
+            justify-content: center;
+            gap: 20px;
+            font-size: 18px;
+            color: #ff6b00;
+            border-top: 1px solid #1e293b;
+            padding-top: 15px;
+            font-weight: 700;
+        }
+
+        /* CONTAINER VAZIO */
+        .chamado-principal.vazio {
+            animation: none;
+            border-color: #2e3748;
+            box-shadow: none;
         }
 
         /* HISTÓRICO */
         .historico-section {
-            background-color: #ffffff;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            background-color: #11151d;
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 25px;
         }
 
         .historico-section h3 {
-            font-size: 18px;
-            color: #4b5563;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #f3f4f6;
-            padding-bottom: 10px;
+            font-size: 20px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1e293b;
+            padding-bottom: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .chamada-item {
-            padding: 12px;
-            border-bottom: 1px solid #f3f4f6;
-            font-size: 15px;
+            padding: 16px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -163,38 +206,80 @@
         }
 
         .motorista-col {
-            font-weight: 700;
-            color: #16a34a; 
+            font-weight: 800;
+            color: #10b981; 
+            font-size: 19px;
         }
 
         .motorista-col.ausente {
-            color: #dc2626; 
+            color: #ef4444; 
             font-style: italic;
         }
 
         .gaiola-col {
-            font-size: 13px;
-            color: #6b7280;
-            font-weight: 500;
+            font-size: 15px;
+            color: #94a3b8;
+            font-weight: 600;
+            margin-top: 3px;
         }
 
         .bancada-badge {
-            background-color: #f3f4f6;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-            color: #4b5563;
-            font-size: 13px;
+            background-color: #ff6b00;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 800;
+            color: #0d0f12;
+            font-size: 15px;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.2);
+            text-transform: uppercase;
         }
 
         .sem-chamadas {
             text-align: center;
-            color: #9ca3af;
-            padding: 30px 0;
+            color: #64748b;
+            padding: 40px 0;
+            font-size: 18px;
+        }
+
+        /* INTERRUPTOR DE AUDIO (MODAL FLUTUANTE) */
+        #audioPermissao {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff6b00;
+            color: #0d0f12;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(255, 107, 0, 0.4);
+            border: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        #audioPermissao:hover {
+            transform: scale(1.05);
+            background: #ff852e;
+        }
+
+        #audioPermissao.ativo {
+            background: #1e293b;
+            color: #94a3b8;
+            box-shadow: none;
         }
     </style>
 </head>
 <body>
+
+    <!-- Botão de Ativação do Áudio -->
+    <button id="audioPermissao" onclick="ativarAudio()">
+        🔊 ATIVAR SOM DO PAINEL
+    </button>
 
     <div class="container">
         <header>
@@ -202,8 +287,9 @@
             <p>Chamadas em Tempo Real (Duplas de Carga)</p>
         </header>
 
+        <!-- Destaque Principal -->
         <div class="chamado-principal" id="containerDestaque" style="display: none;">
-            <h2>Chamando Agora na <span id="destaqueBancada">Bancada -</span>:</h2>
+            <h2>Chamando Agora na <span class="bancada-destacada" id="destaqueBancada">Bancada -</span></h2>
             
             <div class="destaque-dupla-flex">
                 <div class="motorista-destaque-box" id="boxImpar">
@@ -221,16 +307,18 @@
                 </div>
             </div>
 
-            <div class="meta-chamado" style="justify-content: center; gap: 20px; font-weight: 600; color: #c2410c;">
+            <div class="meta-chamado">
                 <span>Horário da Chamada: <span id="destaqueHora">00:00</span></span>
             </div>
         </div>
 
-        <div class="chamado-principal" id="containerVazio">
-            <h2 style="color: #ea580c;">Aguardando chamada inicial...</h2>
-            <p style="color: #6b7280; margin-top: 10px;">As próximas duplas de motoristas aparecerão aqui.</p>
+        <!-- Mensagem de Espera -->
+        <div class="chamado-principal vazio" id="containerVazio">
+            <h2 style="color: #ff6b00; margin-bottom: 10px;">Aguardando chamada inicial...</h2>
+            <p style="color: #94a3b8;">As próximas duplas de motoristas aparecerão aqui.</p>
         </div>
 
+        <!-- Histórico -->
         <div class="historico-section">
             <h3>Últimas Duplas Chamadas</h3>
             <div id="listaHistorico">
@@ -239,12 +327,11 @@
         </div>
     </div>
 
-    <audio id="audioNotificacao" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-84.wav" preload="auto"></audio>
-
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
     <script>
+        // Configurações do Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCndSz1N8C_i94VbQsVLu9VUIEI1du-KAo",
             authDomain: "sistema-drives.firebaseapp.com",
@@ -258,23 +345,80 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
+        // Elementos de DOM
         const containerDestaque = document.getElementById('containerDestaque');
         const containerVazio = document.getElementById('containerVazio');
-        
         const nomeImpar = document.getElementById('nomeImpar');
         const gaiolaImpar = document.getElementById('gaiolaImpar');
         const boxImpar = document.getElementById('boxImpar');
-
         const nomePar = document.getElementById('nomePar');
         const gaiolaPar = document.getElementById('gaiolaPar');
         const boxPar = document.getElementById('boxPar');
-
         const destaqueBancada = document.getElementById('destaqueBancada');
         const destaqueHora = document.getElementById('destaqueHora');
         const listaHistorico = document.getElementById('listaHistorico');
-        const audioNotificacao = document.getElementById('audioNotificacao');
+        const btnAudio = document.getElementById('audioPermissao');
 
         let ultimoIdChamado = null;
+        let audioAtivo = false;
+        let audioCtx = null;
+
+        // Função para ativar o áudio nativo na primeira interação
+        function ativarAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            audioAtivo = true;
+            btnAudio.innerText = "🔊 SOM ATIVADO";
+            btnAudio.classList.add('ativo');
+            
+            // Toca um bipe rápido para confirmar ativação
+            tocarAlertaNativo();
+            
+            // Esconde o botão após alguns segundos para limpar o painel
+            setTimeout(() => {
+                btnAudio.style.display = 'none';
+            }, 2500);
+        }
+
+        // Sintetizador nativo para o Alerta de Chamada (Garante reprodução sem depender de arquivo externo)
+        function tocarAlertaNativo() {
+            if (!audioAtivo || !audioCtx) return;
+
+            try {
+                // Bipe 1
+                let osc1 = audioCtx.createOscillator();
+                let gain1 = audioCtx.createGain();
+                osc1.type = 'sine';
+                osc1.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5 (Nota D)
+                gain1.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain1.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
+                osc1.connect(gain1);
+                gain1.connect(audioCtx.destination);
+                osc1.start();
+                osc1.stop(audioCtx.currentTime + 0.4);
+
+                // Bipe 2 (Atrasado)
+                setTimeout(() => {
+                    let osc2 = audioCtx.createOscillator();
+                    let gain2 = audioCtx.createGain();
+                    osc2.type = 'sine';
+                    osc2.frequency.setValueAtTime(880, audioCtx.currentTime); // A5 (Nota Lá mais aguda)
+                    gain2.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                    gain2.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+                    osc2.connect(gain2);
+                    gain2.connect(audioCtx.destination);
+                    osc2.start();
+                    osc2.stop(audioCtx.currentTime + 0.6);
+                }, 180);
+
+            } catch (e) {
+                console.log("Falha ao emitir áudio nativo:", e);
+            }
+        }
 
         function extrairDadosGaiola(gaiolaStr) {
             if (!gaiolaStr) return null;
@@ -292,7 +436,6 @@
         database.ref('fila').on('value', function(snapshot) {
             let todosRegistros = [];
 
-            // 1. Coleta todos os registros marcados como chamados
             snapshot.forEach(function(childSnapshot) {
                 const dados = childSnapshot.val();
                 if (dados.status === "chamado") {
@@ -307,7 +450,6 @@
                 }
             });
 
-            // Ordena do mais recente para o mais antigo
             todosRegistros.sort((a, b) => b.timestamp - a.timestamp);
 
             if (todosRegistros.length === 0) {
@@ -317,7 +459,6 @@
                 return;
             }
 
-            // 2. Agrupamento inteligente por par de Gaiolas e mesma chamada (Bancada + Hora)
             let duplasAgrupadas = [];
             let processadosIds = new Set();
 
@@ -327,12 +468,10 @@
                 const infoG = extrairDadosGaiola(registro.gaiola);
                 if (!infoG) return;
 
-                // Descobre matematicamente qual deveria ser o texto do parceiro dele (ex: A-01 -> A-02)
                 let numParceiro = infoG.numero % 2 !== 0 ? infoG.numero + 1 : infoG.numero - 1;
                 let numPFormatado = numParceiro < 10 ? `0${numParceiro}` : numParceiro;
                 let textoParceiroAlvo = `${infoG.letra}-${numPFormatado}`;
 
-                // Procura se o parceiro também possui um registro de chamado na mesma bancada e horário
                 let parceiroMatch = todosRegistros.find(r => {
                     if (r.id === registro.id || processadosIds.has(r.id)) return false;
                     const infoR = extrairDadosGaiola(r.gaiola);
@@ -351,31 +490,26 @@
 
                 const principalEhImpar = infoG.numero % 2 !== 0;
 
-                // Distribui corretamente nas posições físicas Impar / Par
                 if (principalEhImpar) {
                     itemDupla.nomeImpar = registro.nome;
                     itemDupla.gaiolaImpar = infoG.gaiolaTexto;
-                    
                     itemDupla.nomePar = parceiroMatch ? parceiroMatch.nome : "AGUARDANDO...";
                     itemDupla.gaiolaPar = textoParceiroAlvo;
                 } else {
                     itemDupla.nomePar = registro.nome;
                     itemDupla.gaiolaPar = infoG.gaiolaTexto;
-                    
                     itemDupla.nomeImpar = parceiroMatch ? parceiroMatch.nome : "AGUARDANDO...";
                     itemDupla.gaiolaImpar = textoParceiroAlvo;
                 }
 
                 duplasAgrupadas.push(itemDupla);
                 
-                // Marca ambos como processados para não duplicar no painel
                 processadosIds.add(registro.id);
                 if (parceiroMatch) {
                     processadosIds.add(parceiroMatch.id);
                 }
             });
 
-            // 3. Renderiza o Destaque Principal (A Dupla Mais Recente)
             const atual = duplasAgrupadas[0];
 
             nomeImpar.innerText = atual.nomeImpar;
@@ -400,13 +534,12 @@
             containerVazio.style.display = "none";
             containerDestaque.style.display = "block";
 
-            // Toca o alerta sonoro se uma nova dupla subir para o topo
+            // Executa o som de notificação inteligente se o ID mudou
             if (ultimoIdChamado && ultimoIdChamado !== atual.idPrincipal) {
-                audioNotificacao.play().catch(e => console.log("Áudio bloqueado pelo navegador."));
+                tocarAlertaNativo();
             }
             ultimoIdChamado = atual.idPrincipal;
 
-            // 4. Renderiza o Histórico (Restante das Duplas)
             let historicoHTML = "";
             const listaHistoricoItens = duplasAgrupadas.slice(1);
 
@@ -414,18 +547,18 @@
                 listaHistoricoItens.forEach(function(item) {
                     historicoHTML += `
                         <div class="chamada-item">
-                            <div style="display: flex; gap: 20px; width: 80%;">
+                            <div style="display: flex; gap: 30px; width: 80%;">
                                 <div style="flex: 1;">
                                     <div class="motorista-col ${item.nomeImpar === 'AGUARDANDO...' ? 'ausente' : ''}">${item.nomeImpar}</div>
                                     <div class="gaiola-col">Gaiola: ${item.gaiolaImpar}</div>
                                 </div>
-                                <div style="flex: 1; border-left: 1px solid #f3f4f6; padding-left: 15px;">
+                                <div style="flex: 1; border-left: 1px solid #1e293b; padding-left: 20px;">
                                     <div class="motorista-col ${item.nomePar === 'AGUARDANDO...' ? 'ausente' : ''}">${item.nomePar}</div>
                                     <div class="gaiola-col">Gaiola: ${item.gaiolaPar}</div>
                                 </div>
                             </div>
                             <div style="text-align: right;">
-                                <div style="font-size: 12px; color: #9ca3af; margin-bottom: 4px;">${item.horaChamado}</div>
+                                <div style="font-size: 14px; color: #64748b; margin-bottom: 5px;">${item.horaChamado}</div>
                                 <span class="bancada-badge">${item.bancada}</span>
                             </div>
                         </div>
